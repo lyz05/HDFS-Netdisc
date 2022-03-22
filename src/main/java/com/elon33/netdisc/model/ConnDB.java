@@ -13,8 +13,8 @@ public class ConnDB {
 	 * 返回数据库访问连接对象
 	 */
 	private final String hostname = "localhost";
-	private final String username = "root";
-	private final String password = "5137";
+	private final String username = System.getenv("MYSQL_USER");;
+	private final String password = System.getenv("MYSQL_PASS");;
 	public Connection getConn() {
 		try {
 			// 加载驱动
