@@ -33,19 +33,19 @@ public class UserBeanCl {
 			// 创建statement
 			sm = ct.createStatement();
 
-			rs = sm.executeQuery("select * from user where username=\"" + username + "\"");
-
+			String sql = "select * from user where username=\"" + username + "\"";
+			rs = sm.executeQuery(sql);
+			System.out.println(sql);
 			if (rs.next()) {
 				// 说明用户存在
-				String pwd = rs.getString(3);
+				System.out.println("User Correct");
+				String pwd = rs.getString(4);
+				System.out.println(pwd);
 				if (password.equals(pwd)) {
 					// 说明密码正确
+					System.out.println("Password correct");
 					val = true;
-				} else {
-					val = false;
 				}
-			} else {
-				val = false;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

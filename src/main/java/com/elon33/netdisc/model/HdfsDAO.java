@@ -19,7 +19,7 @@ import org.apache.hadoop.mapred.JobConf;
 public class HdfsDAO {
 
 	// HDFS访问地址
-	private static final String HDFS = "hdfs://192.168.1.101:9000";
+	private static final String HDFS = "hdfs://hadoop100:9000";
 	// hdfs路径
 	private String hdfsPath;
 	// Hadoop系统配置
@@ -45,7 +45,7 @@ public class HdfsDAO {
 
 		try {
 			System.out.println(conf.get("fs.defaultFS"));
-			hdfs.mkdirs("/Tom1/tom1/ttt");
+			hdfs.mkdirs("/root");
 			// hdfs.copyFile("c:/mr.jar", "/aa/bb/1234");
 			// hdfs.ls("/");
 			// hdfs.rmr("/wgc/files");
@@ -75,6 +75,8 @@ public class HdfsDAO {
 		if (!fs.exists(path)) {
 			fs.mkdirs(path);
 			System.out.println("Create: " + folder);
+		} else {
+			System.out.println("Dir already exists: " + folder);
 		}
 		fs.close();
 	}

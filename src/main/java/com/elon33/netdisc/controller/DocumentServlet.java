@@ -30,9 +30,9 @@ public class DocumentServlet extends HttpServlet {
 		 JobConf conf = HdfsDAO.config();
 	     HdfsDAO hdfs = new HdfsDAO(conf);
 	     FileStatus[] documentList = hdfs.ls(filePath);
-	     request.setAttribute("documentList",documentList);
+	     request.setAttribute("list",documentList);
 	     session.setAttribute("currentPath", filePath);
-		 request.getRequestDispatcher("document.jsp").forward(request,response);
+		 request.getRequestDispatcher("index.jsp").forward(request,response);
 	}
 
 	/**

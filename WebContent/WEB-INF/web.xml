@@ -15,11 +15,11 @@
 
 	<context-param>
 		<param-name>file-upload</param-name>
-		<param-value>F:\apache-tomcat-8.0.48\Netdisc-upload</param-value>
+		<param-value>D:\Program Files\apache-tomcat-7.0.32\Netdisc-upload</param-value>
 	</context-param>
 	<context-param>
 		<param-name>file-download</param-name>
-		<param-value>F:\apache-tomcat-8.0.48\Netdisc-download</param-value>
+		<param-value>D:\Program Files\apache-tomcat-7.0.32\Netdisc-download</param-value>
 	</context-param>
 
 	<servlet>

@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	/**
+	 * 登录系统
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,12 +40,14 @@ public class LoginServlet extends HttpServlet {
 		UserBeanCl ubc = new UserBeanCl();
 		if(ubc.checkUser(username, password)){
 			//用户合法，跳转到界面
+			System.out.println("user login success");
 			HttpSession session = request.getSession(); 
 			session.setAttribute("username", username);
 			session.setAttribute("currentPath", HdfsDAO.getHdfs()+"/"+username);
 			JobConf conf = HdfsDAO.config();
 	        HdfsDAO hdfs = new HdfsDAO(conf);
 			FileStatus[] list = hdfs.ls("/"+username);
+			//FileStatus[] list = null;
 			request.setAttribute("list",list);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}else{
@@ -52,8 +55,8 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 
-		
-	 
+
+
 	}
 
 }

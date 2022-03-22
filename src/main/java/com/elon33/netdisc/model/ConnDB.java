@@ -11,19 +11,21 @@ public class ConnDB {
 
 	/**
 	 * 返回数据库访问连接对象
-	 * @return DB Connection
 	 */
+	private final String hostname = "localhost";
+	private final String username = "root";
+	private final String password = "5137";
 	public Connection getConn() {
 		try {
 			// 加载驱动
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			// 得到连接
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hadoop?user=root&password=123456");
+			con = DriverManager.getConnection("jdbc:mysql://"+hostname+":3306/hadoop?serverTimezone=UTC&user="+username+"&password="+password);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// if (con != null)
-		// System.out.println("******数据库连接成功！*******");
+		if (con != null)
+			System.out.println("******数据库连接成功！*******");
 		return con;
 	}
 }
